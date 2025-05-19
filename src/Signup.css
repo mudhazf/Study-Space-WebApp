@@ -23,6 +23,7 @@ html, body, #root {
 
 /* Centered form card with better layout */
 .form-container {
+  margin-top: 9%;
   position: relative;
   z-index: 1; /* keep it above the background */
   width: 100%;
@@ -39,6 +40,7 @@ html, body, #root {
 
 /* Headings */
 .register {
+  
   font-size: 2.2em;
   font-weight: bold;
   color: #0d83fd;

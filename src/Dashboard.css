@@ -9,7 +9,10 @@ body {
   background: linear-gradient(to right, #d3e5f1, #ffffff);
 }
 
+
 .dashboard-page {
+  position: relative;
+  z-index: 0;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -17,7 +20,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   
- /* background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1350&q=80'); */
+  /*background-image: url('src/assets/about.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,8 +28,20 @@ body {
   box-sizing: border-box;
 }
 
+.dashboard-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.4); /* Adjust the 0.4 for desired lightness */
+  z-index: -1; /* Keeps the overlay behind all content */
+  pointer-events: none; /* Makes the overlay non-interactive */
+}
+
 .dashboard-page h2 {
-    margin-top: 8%;
+    margin-top: 30%;
   font-weight: 700;
   color: #0d83fd;
 }

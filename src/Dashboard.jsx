@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [user, setUser] = useState({
     name: 'Alex Hartley',
     email: 'abc@example.com',
-    profileImage: 'https://i.pravatar.cc/150?img=47', // You can change to your own image URL
+    profileImage: '', // You can change to your own image URL
   });
 
   useEffect(() => {
@@ -56,10 +56,16 @@ const Dashboard = () => {
         <div className="profile-wrapper">
           <div className="card profile-card text-center">
             <img
-              src={user.profileImage}
-              alt="Profile"
-              className="profile-image mb-3"
-            />
+  src={
+    user.profileImage
+      ? user.profileImage
+      : `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=2d465e&color=fff`
+  }
+  alt="Profile"
+  className="profile-image mb-3"
+/>
+
+            
             <h5>{user.name}</h5>
             <p className="text-muted mb-1">{user.email}</p>
             <p className="text-muted">
