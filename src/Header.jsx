@@ -1,9 +1,25 @@
-// src/components/Header.jsx
 import React from 'react';
-import './Home.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const navigate = useNavigate();
+
+  const handleAboutClick = (e) => {
+    e.preventDefault();
+    if (currentPath === '/home') {
+      // If already on home, just scroll to #about
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to /home#about
+      navigate('/home#about');
+    }
+  };
+
   return (
     <header id="header" className="header d-flex align-items-center fixed-top">
       <div className="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -13,9 +29,9 @@ const Header = () => {
 
         <nav id="navmenu" className="navmenu">
           <ul>
-            <li><Link to="/home " className="active">Home</Link></li>
-            <li><a href="#about">About</a></li>
-            <li><Link to="/dashboard" >Dashboard</Link></li>
+            <li><Link to="/home" className={currentPath === '/home' ? 'active' : ''}>Home</Link></li>
+            <li><a href="#about" onClick={handleAboutClick}>About</a></li>
+            <li><Link to="/dashboard" className={currentPath === '/dashboard' ? 'active' : ''}>Dashboard</Link></li>
             <li><a href="#">Rooms</a></li>
             <li><a href="#">Resources</a></li>
             <li><a href="#">Profile</a></li>
